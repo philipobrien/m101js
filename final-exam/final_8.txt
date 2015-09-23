@@ -1,0 +1,20 @@
+[ ] Yes, always
+[ ] No, never
+[ ] Maybe, it depends on whether Node 3 has processed the write
+[x] Maybe, it depends on whether Node 2 has processed the write
+
+First, let's review the problem. It states that our write concern is majority. This means that if the write was executed on 2 or more nodes, no rollback will occur. Node 1 has processed the write, so we need to consider whether Node 2 or Node 3 has also processed the write. We can rule out Node 3 (i.e., it did not process the write), because it's on a 2-hour delay and Node 1 recovers after 1-hour. This leaves us with Node 2. It may or may not have processed the write.
+
+Now, let's consider the choices:
+
+Yes, always.
+Since we can't say for certain whether Node 2 didn't process the write, "Yes, always" can't be the correct answer.
+
+No, never.
+Again, because we don't know whether Node 2 processed the write "No, never" can't be the correct answer.
+
+Maybe, it depends on whether Node 3 has processed the write.
+We established that Node 3 couldn't have processed the write because of the 2-hour delay, leaving us to consider Node 2. So this choice is wrong. Our answer is not dependent on Node 3.
+
+Maybe, it depends on whether Node 2 has processed the write.
+As we've explored above, rollback is dependent on whether Node 2 has processed the write. So, this is the correct answer.

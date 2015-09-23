@@ -1,0 +1,6 @@
+[x] susan.mara@enron.com to jeff.dasovich@enron.com
+[ ] susan.mara@enron.com to richard.shapiro@enron.com
+[ ] soblander@carrfut.com to soblander@carrfut.com
+[ ] susan.mara@enron.com to james.steffes@enron.com
+[ ] evelyn.metoyer@enron.com to kate.symes@enron.com
+[ ] susan.mara@enron.com to alan.comnes@enron.com

@@ -1,0 +1,6 @@
+[x] patient_id
+[ ] _id
+[ ] Primary care physician (your principal doctor that handles everyday problems)
+[ ] Date and time when medical record was created
+[ ] Patient first name
+[ ] Patient last name

@@ -1,0 +1,5 @@
+[ ] Add an index on last_name, first_name if one does not already exist.
+[x] Remove all indexes from the collection, leaving only the index on _id in place
+[ ] Provide a hint to MongoDB that it should not use an index for the inserts
+[x] Set w=0, j=0 on writes
+[ ] Build a replica set and insert data into the secondary nodes to free up the primary nodes.

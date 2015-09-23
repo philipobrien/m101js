@@ -1,0 +1,10 @@
+[ ] The query used an index to figure out which documents match the find criteria.
+[x] The query avoided sorting the documents because it was able to use an index's ordering.
+[x] The query scanned every document in the collection.
+[ ] The query returned 120,477 documents.
+
+Let's look at each of those statements:
+"The query used an index to figure out which documents match the find criteria." - This is false. The query does use an index, but the filter on "headers.Date" shows up in the "FETCH" stage, not the "IXSCAN" stage. The "IXSCAN" stage's "indexBounds" shows that the full index is scanned: from MinKey to MaxKey. This makes sense because the filter needs to look at the "headers.Date" field, which isn't in this index.
+"The query avoided sorting the documents because it was able to use an index's ordering." - This is true. There's no "SORT" stage in the plan, which means the documents are already in the correct order as they're being scanned. This makes sense because the "IXSCAN" stage is using the "headers.From_1" index, and the sort was on { "headers.From": 1 }.
+"The query returned 120,477 documents." - This is false. Under "executionStats", "nReturned" is 83057.
+"The query examined every document in the collection." - This is true. The "IXSCAN" stage doesn't have any bounds or filter, so it scans the whole index, which means the "FETCH" stage ends up fetching every document. And under "executionStats", "totalDocsExamined" is 120477, which you might remember is the number of documents in the collection.
